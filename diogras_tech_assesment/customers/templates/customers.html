@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div>
+    <h3>
+        Active Customers
+    </h3>
+    <ul id="customers" hx-target="#customers" hx-swap="outerHTML" class="list-group">
+        {% for customer in customers %}
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+            <p>Name: {{customer.first_name}} {{customer.last_name}}</p>
+            <p>Address: {{customer.address}} {{customer.city}}, {{customer.state}} {{customer.zipcode}} </p>
+            <a type="button" class="btn btn-danger" hx-delete="{% url 'delete_customer' customer.id%}" > 
+                Delete 
+            </a>
+
+            </div>
+        </li>
+        {% endfor %}
+    
+    </ul>
+
+</div>
+{% endblock %}

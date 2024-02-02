@@ -1,0 +1,14 @@
+<div>
+    {% for customer in customers %}
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+            <p>Name: {{customer.first_name}} {{customer.last_name}}</p>
+            <p>Address: {{customer.address}}, {{customer.city}}, {{customer.state}} {{customer.zipcode}} </p>
+            <a type="button" class="btn btn-danger" hx-delete="{% url 'delete_customer' customer.id%}"  hx-target="#customers"> 
+                Delete 
+            </a>
+
+            </div>
+        </li>
+    {% endfor %}
+</div>
